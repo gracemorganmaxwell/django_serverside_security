@@ -6,8 +6,8 @@ This README outlines the step-by-step methodology for developing the GoNZ web ap
 
 ### 1.1 Set Up the Project Repository
 - [x] **Create a new GitHub repository**
-- [ ] **Clone the repository** to my local machine.
-- [ ] **Set up a `.gitignore` file** to exclude unnecessary files (e.g., environment settings, compiled files).
+- [x] **Clone the repository** to my local machine.
+- [x] **Set up a `.gitignore` file** to exclude unnecessary files (e.g., environment settings, compiled files).
   - Best Practices: Use descriptive commit messages and push commits regularly. Keep the `main` branch clean by only merging well-tested features.
 
 ### 1.2 Set Up the Development Environment
