@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from tours.models import Tour  # Assuming you have a Tour model in the tours app
+from agents.models import Agent  # Assuming you have an Agent model in the agents app
 
 def signup(request):
     if request.method == 'POST':
@@ -30,4 +32,15 @@ def logout_view(request):
 
 @login_required
 def profile(request):
-    return render(request, 'accounts/profile.html')
+    user = request.user
+    if user.groups.filter(name='Administrators').exists():
+        tours = Tour.objects.all()
+        agents = Agent.objects.all()
+    elif user.groups.filter(name='Managers').exists():
+        tours = Tour.objects.filter(managed_by=user)
+        agents = Agent.objects.all()  # Managers can see all agents
+    else:  # Agents group
+        tours = Tour.objects.filter(managed_by=user)
+        agents = Agent.objects.filter(id=user.id)  # Agents only see their own info
+
+    return render(request, 'accounts/profile.html', {'tours': tours, 'agents': agents})

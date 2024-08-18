@@ -167,26 +167,26 @@ By completing the above tasks, you can ensure that your authentication, user man
 ## 4. URL and Navigation Setup
 
 ### 4.1 Define URL Patterns for Each App
-- [ ] **Define URLs in each app’s `urls.py`**:
+- [x] **Define URLs in each app’s `urls.py`**:
   - `gonztours`: `/` - Home page
   - `tours`: `/tours/` - List all tours, `/tours/<tour_id>/` - View details for a single tour
   - `agents`: `/agents/` - List all agents, `/agents/<agent_id>/` - View details for a single agent
-- [ ] **Include the app URLs in the project’s main `urls.py`**.
+- [x] **Include the app URLs in the project’s main `urls.py`**.
 
 ### 4.2 Create Corresponding Views and Templates
-- [ ] **Develop views for each URL** and ensure they render the correct template.
-- [ ] **Use HTML templates** with Bootstrap for styling.
+- [x] **Develop views for each URL** and ensure they render the correct template.
+- [x] **Use HTML templates** with Bootstrap for styling.
   - Best Practices: Reuse components like headers, footers, and navigation bars across templates.
 
 ### 4.3 Implement Navigation
-- [ ] **Ensure the navigation bar includes links** to all relevant pages (home, tours, agents).
-- [ ] **Implement breadcrumbs or a similar feature** to help users understand their location within the application.
+- [x] **Ensure the navigation bar includes links** to all relevant pages (home, tours, agents).
+- [x] **Implement breadcrumbs or a similar feature** to help users understand their location within the application.
 - [ ] **Test the navigation** to ensure it is logical and intuitive.
   - Best Practices: Conduct user testing or gather feedback to improve navigation design.
 
 ## 5. Authorization and Access Control
 
 ### 5.1 Set Up User and Group Permissions
-- [ ] **Assign permissions to the Administrator, Agent, and Manager groups** according to the requirements:
+- [x] **Assign permissions to the Administrator, Agent, and Manager groups** according to the requirements:
   - Administrators: Full permissions, including modifying users and tour data.
   - Agents: Modify their personal information and tours they are responsible for.
