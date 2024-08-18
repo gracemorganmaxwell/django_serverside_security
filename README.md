@@ -99,10 +99,10 @@ Before setting up the views, it’s essential to establish the user roles and pe
 By completing these steps, the user management system will be set up with appropriate roles and permissions, ensuring that users have access only to the resources and actions necessary for their roles.
 
 ### 3.3 Set Up “Signup” and “Login” Views
-- [ ] **Create Django views and forms** for user signup and login.
-- [ ] **Ensure passwords are hashed** using Django’s built-in `make_password()` function.
-- [ ] **Implement form validation** to prevent attacks like SQL injection.
-- [ ] **Apply Bootstrap styling** to forms for a clean and user-friendly interface.
+- [x] **Create Django views and forms** for user signup and login.
+- [x] **Ensure passwords are hashed** using Django’s built-in `make_password()` function.
+- [x] **Implement form validation** to prevent attacks like SQL injection.
+- [x] **Apply Bootstrap styling** to forms for a clean and user-friendly interface.
   - Best Practices: Use Django’s built-in authentication mechanisms to manage sessions securely.
 
 ### 3.4 Authentication and User Management: Manual Testing Tasks
@@ -110,18 +110,18 @@ By completing these steps, the user management system will be set up with approp
 Manually test the various endpoints to ensure that everything is functioning as expected. Below is a list of endpoints to test:
 
 #### 1. Admin Interface
-- **Admin Login Page:**
+- [x] **Admin Login Page:** 
   - **URL:** `/admin/`
   - **Description:** Access the Django admin interface login page to authenticate as an admin.
   - **Task:** Verify that the login page loads correctly and that you can log in with admin credentials.
 
-- **Admin Dashboard:**
+- [x] **Admin Dashboard:**
   - **URL:** `/admin/`
   - **Description:** Once logged in, this dashboard allows management of models registered with the admin interface.
   - **Task:** Ensure that the admin dashboard is accessible and displays all registered models.
 
 #### 2. Home Page
-- **Home Page:**
+- [x] **Home Page:**
   - **URL:** `/home/`
   - **Description:** The main landing page for GoNZ Tours.
   - **Task:** Confirm that the home page loads successfully and displays the expected content.
@@ -155,9 +155,9 @@ Manually test the various endpoints to ensure that everything is functioning as 
   - **Task:** Replace `<path_to_static_file>` with the relative path to a specific static file and verify that the file loads correctly.
 
 ### Testing Checklist
-- [ ] Confirm the admin login page is accessible and functional.
-- [ ] Ensure the admin dashboard displays all registered models.
-- [ ] Verify the home page loads with the correct content.
+- [x] Confirm the admin login page is accessible and functional.
+- [x] Ensure the admin dashboard displays all registered models.
+- [x] Verify the home page loads with the correct content.
 - [ ] Confirm that the agent list and detail pages display correctly.
 - [ ] Ensure that the tour list and detail pages are functioning as expected.
 - [ ] Test access to static files to verify they are being served properly.
