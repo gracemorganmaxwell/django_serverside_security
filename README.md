@@ -1,3 +1,7 @@
+Certainly! Here’s how the updated README could look with the new section for setting up user roles and permissions, followed by the steps for setting up the tour and agent views:
+
+---
+
 # GoNZ Web Application Development Tasks
 
 This README outlines the step-by-step methodology for developing the GoNZ web application. Each task is designed to be completed sequentially, following best practices like shipping one feature at a time, using different branches for development, and coding in public. Additionally, Bootstrap will be integrated to enhance the visual appeal of the application.
@@ -44,18 +48,55 @@ This README outlines the step-by-step methodology for developing the GoNZ web ap
 ## 3. Authentication and User Management
 
 ### 3.1 Create the Admin Superuser
-- [ ] **Run the Django management command** to create an admin superuser:
+- [x] **Run the Django management command** to create an admin superuser:
   ```bash
   python manage.py createsuperuser
   ```
-- [ ] **Choose a secure and robust password** following best practices (e.g., at least 12 characters, mix of letters, numbers, and symbols).
+- [x] **Choose a secure and robust password** following best practices (e.g., at least 12 characters, mix of letters, numbers, and symbols).
   - Best Practices: Use a password manager to store admin credentials securely.
 
-### 3.2 Create Users and User Groups
-- [ ] **Define the user roles** (Administrator, Agent, Manager) in the Django admin panel.
-- [ ] **Create user groups for each role** and assign appropriate permissions based on the department deputy list.
-- [ ] **Create users** (e.g., Haywood Luby, Mariah Schumaker) and assign them to their respective groups.
+### 3.2 Set Up User Roles and Permissions
+Before setting up the views, it’s essential to establish the user roles and permissions within the Django admin panel:
+
+#### Define User Roles:
+- **Administrators**: Have full permissions, including modifying any users and tour data.
+- **Agents**: Can provide and modify their personal information, add tours, and modify tours they manage.
+- **Managers**: Can modify the information of all agents and tours.
+
+#### Create User Groups and Assign Permissions:
+- [x] **Define the user roles** (Administrator, Agent, Manager) in the Django admin panel.
+- [x] **Create user groups for each role** and assign appropriate permissions based on the department deputy list:
+  - **Administrators**: Haywood Luby, Mariah Schumaker
+  - **Agents**: Marty Schaeffer, Beryl Gauer, Cathrine Heckstall, Dane Ratliff
+  - **Managers**: Halina Dabbs, Andres Peltier
+
+#### Assign Permissions:
+
+1. **Administrators:**
+   - **Full Permissions**: 
+     - **Log Entry**: `can add`, `can change`, `can view`, `can delete`
+     - **Group**: `can add`, `can change`, `can view`, `can delete`
+     - **Permission**: `can add`, `can change`, `can view`, `can delete`
+     - **Session**: `can add`, `can change`, `can view`, `can delete`
+     - **User**: `can add`, `can change`, `can view`, `can delete`
+     - **Content Type**: `can add`, `can change`, `can view`, `can delete`
+
+2. **Managers:**
+   - **Log Entry**: `can view`
+   - **Session**: `can view`, `can change`
+   - **User**: `can add`, `can change`, `can view`, `can delete`
+   - **No permissions** for managing groups, permissions, or content types.
+
+3. **Agents:**
+   - **Log Entry**: `can view`
+   - **Session**: `can view`
+   - **User**: `can change` (only for their own profile), `can view`
+   - **No permissions** for managing groups, permissions, or content types.
+
+- [x] **Create users** based on the defined roles (e.g., Haywood Luby, Mariah Schumaker) and assign them to their respective groups.
   - Best Practices: Implement the principle of least privilege by giving each group only the permissions necessary for their role.
+
+By completing these steps, the user management system will be set up with appropriate roles and permissions, ensuring that users have access only to the resources and actions necessary for their roles.
 
 ### 3.3 Set Up “Signup” and “Login” Views
 - [ ] **Create Django views and forms** for user signup and login.
@@ -63,6 +104,65 @@ This README outlines the step-by-step methodology for developing the GoNZ web ap
 - [ ] **Implement form validation** to prevent attacks like SQL injection.
 - [ ] **Apply Bootstrap styling** to forms for a clean and user-friendly interface.
   - Best Practices: Use Django’s built-in authentication mechanisms to manage sessions securely.
+
+### 3.4 Authentication and User Management: Manual Testing Tasks
+
+Manually test the various endpoints to ensure that everything is functioning as expected. Below is a list of endpoints to test:
+
+#### 1. Admin Interface
+- **Admin Login Page:**
+  - **URL:** `/admin/`
+  - **Description:** Access the Django admin interface login page to authenticate as an admin.
+  - **Task:** Verify that the login page loads correctly and that you can log in with admin credentials.
+
+- **Admin Dashboard:**
+  - **URL:** `/admin/`
+  - **Description:** Once logged in, this dashboard allows management of models registered with the admin interface.
+  - **Task:** Ensure that the admin dashboard is accessible and displays all registered models.
+
+#### 2. Home Page
+- **Home Page:**
+  - **URL:** `/home/`
+  - **Description:** The main landing page for GoNZ Tours.
+  - **Task:** Confirm that the home page loads successfully and displays the expected content.
+
+#### 3. Agents Management
+- **Agent List:**
+  - **URL:** `/agents/`
+  - **Description:** Lists all agents associated with GoNZ Tours.
+  - **Task:** Verify that the list of agents is displayed correctly.
+
+- **Agent Detail:**
+  - **URL:** `/agents/<agent_id>/`
+  - **Description:** Displays detailed information for a specific agent.
+  - **Task:** Replace `<agent_id>` with a valid agent ID and ensure that the detail page displays the correct information for that agent.
+
+#### 4. Tours Management
+- **Tour List:**
+  - **URL:** `/tours/`
+  - **Description:** Displays a list of all available tours.
+  - **Task:** Ensure that the list of tours is displayed correctly.
+
+- **Tour Detail:**
+  - **URL:** `/tours/<tour_id>/`
+  - **Description:** Displays detailed information for a specific tour.
+  - **Task:** Replace `<tour_id>` with a valid tour ID and confirm that the detail page displays the correct information for that tour.
+
+#### 5. Static Files Access
+- **Static Files:**
+  - **URL:** `/static/<path_to_static_file>`
+  - **Description:** Access static files like CSS, JavaScript, or images.
+  - **Task:** Replace `<path_to_static_file>` with the relative path to a specific static file and verify that the file loads correctly.
+
+### Testing Checklist
+- [ ] Confirm the admin login page is accessible and functional.
+- [ ] Ensure the admin dashboard displays all registered models.
+- [ ] Verify the home page loads with the correct content.
+- [ ] Confirm that the agent list and detail pages display correctly.
+- [ ] Ensure that the tour list and detail pages are functioning as expected.
+- [ ] Test access to static files to verify they are being served properly.
+
+By completing the above tasks, you can ensure that your authentication, user management, and overall application are working as intended.
 
 ## 4. URL and Navigation Setup
 
@@ -90,30 +190,3 @@ This README outlines the step-by-step methodology for developing the GoNZ web ap
 - [ ] **Assign permissions to the Administrator, Agent, and Manager groups** according to the requirements:
   - Administrators: Full permissions, including modifying users and tour data.
   - Agents: Modify their personal information and tours they are responsible for.
-  - Managers: Modify the information of all agents and tours.
-- [ ] **Use Django’s `UserPassesTestMixin` or `@permission_required` decorators** to enforce these permissions in views.
-  - Best Practices: Regularly review and audit permissions to ensure they align with role responsibilities.
-
-### 5.2 Restrict Access Based on Roles
-- [ ] **Implement role-based access control (RBAC)** to ensure that only authorized users can access certain pages or perform specific actions.
-- [ ] **Test access controls thoroughly** to ensure that unauthorized users cannot bypass restrictions.
-  - Best Practices: Log access attempts and monitor for any suspicious activity.
-
-## 6. Finalization and Deployment
-
-### 6.1 Code Review and Merge
-- [ ] **Open a pull request for each feature branch** once development is complete.
-- [ ] **Conduct code reviews with peers** to ensure code quality and adherence to best practices.
-- [ ] **Merge the feature branch into the `main` branch** after passing all tests.
-  - Best Practices: Use tools like `pre-commit` hooks and continuous integration (CI) to automate code quality checks.
-
-### 6.2 Deployment
-- [ ] **Set up the production environment**, ensuring that settings are configured securely (e.g., `DEBUG=False`, proper database settings).
-- [ ] **Deploy the application** using a reliable platform (e.g., Heroku, Vercel, Netlify).
-- [ ] **Monitor the application post-deployment** to ensure it runs smoothly.
-  - Best Practices: Implement automated deployment pipelines and monitoring tools like Sentry for error tracking.
-
-### 6.3 Documentation
-- [ ] **Document the setup, configuration, and deployment process**.
-- [ ] **Include instructions for maintaining and updating the application**.
-  - Best Practices: Maintain clear and concise documentation that can be easily followed by other developers.

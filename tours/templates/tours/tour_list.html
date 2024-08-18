@@ -1,0 +1,12 @@
+{% block content %}
+<div class="container">
+    <h1>Tours</h1>
+    <ul>
+        {% for tour in tours %}
+        <li>
+            <a href="{% url 'tours:tour_detail' tour.id %}">{{ tour.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
